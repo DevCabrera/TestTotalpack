@@ -1,6 +1,6 @@
 README
 Descripción del Proyecto
-
+El proyecto cuenta con 10 usuarios mockeados(simulados para front), por lo que al agregar un usuario se ira a la paginacion 2.
 Este proyecto es una aplicación Angular que permite:
 
     Agregar usuarios: Crear nuevos usuarios con nombre, email, fecha de nacimiento y direcciones.
