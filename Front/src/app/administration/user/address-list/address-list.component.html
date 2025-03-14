@@ -1,0 +1,19 @@
+<!-- lista para las direcciones que se muestran en el formulario de usuario -->
+<table>
+    <thead>
+        <tr>
+            <th>Direccion</th>
+            <th>Principal</th>
+        </tr>
+    </thead>
+    <tbody>
+        <!-- Si addresses$ | async es null o undefined, se usa un arreglo vacío [] como valor predeterminado, mientras esperamos al observable -->
+        <tr *ngFor="let address of (addresses$ | async) ?? []">
+            <td>{{ address?.address }}</td>
+            <td>
+                <input type="radio" name="primaryAddress" [value]="address?.id"
+                    (change)="setPrimaryAddress(address?.id)" [checked]="address?.isPrimary">
+            </td>
+        </tr>
+    </tbody>
+</table>

@@ -1,0 +1,45 @@
+
+<!-- tabla donde recorremos ya los datos almacenados, en este caso los mocks que comente en userServices, cada usuario nuevo desspues de 10
+ registros avanzara a la paginacion 2  -->
+<div class="user-table-container">
+    <button (click)="editUser()" class="btn-create-user">Crear usuario</button>
+    <table class="user-table">
+        <thead>
+            <tr>
+                <th>Nombre Completo</th>
+                <th>Fecha Nacimiento</th>
+                <th>Email</th>
+                <th>Direccion Principal</th>
+                <th>Editar</th>
+                <th>Eliminar</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let user of paginatedUsers">
+                <td>{{ user.name }}</td>
+                <td>{{ user.birthdate | date }}</td>
+                <td>{{ user.email }}</td>
+                <td>{{ getPrimaryAddress(user) }}</td>
+                <td>
+                    <button (click)="editUser(user.id)" class="btn-edit">
+                        <i class="fas fa-edit"></i>
+                    </button>
+                </td>
+                <td>
+                    <button (click)="deleteUser(user.id)" class="btn-delete">
+                        <i class="fas fa-trash-alt"></i>
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <!-- Controles de paginación -->
+    <div class="pagination-controls">
+        <button (click)="changePage(currentPage - 1)" [disabled]="currentPage === 1"
+            class="btn-pagination">Anterior</button>
+        <span>Página {{ currentPage }} de {{ totalPages }}</span>
+        <button (click)="changePage(currentPage + 1)" [disabled]="currentPage === totalPages"
+            class="btn-pagination">Siguiente</button>
+    </div>
+</div>

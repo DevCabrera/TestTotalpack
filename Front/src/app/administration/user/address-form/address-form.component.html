@@ -1,0 +1,17 @@
+<!-- formulario para direcciones, con una validacion que no puede estar vacia, para evitar datos null -->
+
+<div class="address-form-container">
+    <h2 class="address-form-title">Registrar Direccion</h2>
+    <form #addressForm="ngForm" (ngSubmit)="saveAddress()">
+        <label class="address-form-label">Direccion</label>
+        <input type="text" name="address" [(ngModel)]="address.address" class="address-form-input" required
+            #addressModel="ngModel" />
+        <app-form-validation [form]="addressForm" [model]="addressModel" [errorMessages]="{
+        required: 'La dirección es requerida.'
+      }"></app-form-validation>
+        <div class="address-form-actions">
+            <button type="button" class="btn-cancel" (click)="closeModal()">Cancelar</button>
+            <button type="submit" class="btn-save" [disabled]="addressForm.invalid">Guardar</button>
+        </div>
+    </form>
+</div>
