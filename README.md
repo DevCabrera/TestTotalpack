@@ -27,7 +27,7 @@ npm install sweetalert2
 Ejecución del Proyecto
 
     #1 Clona el repositorio:
-    git clone https://github.com/tu-usuario/tu-repositorio.git
+    git clone https://github.com/DevCabrera/TestTotalpack.git
     
     #2 Instala las dependencias:
     npm install
