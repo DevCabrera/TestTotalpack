@@ -21,6 +21,8 @@ export class UserFormComponent {
   temporaryAddresses: any[] = [];  // Direcciones temporales, para guardarlas en el usuario mas tarde
   maxDate: string;
 
+  //mi tarea mas complicada fue pensar la logica de las direcciones temporales, ya que al no existir un usuario, no se podia guardar la dirección
+  //por lo que se me ocurrio guardar las direcciones en un array temporal y luego guardarlas en el usuario cuando se registrara el usuario
   constructor( //Constructor de la clases con los servicios y dialogos necesarios
     private userService: UserServices,
     public dialogRef: MatDialogRef<UserFormComponent>,
@@ -99,6 +101,8 @@ export class UserFormComponent {
   }
 
   // Método para enviar un correo electrónico al usuario
+  //intente realizar la implementación de la función sendEmailToUser() pero no pude lograrlo, ya que tengo errores
+  //de cors en el servidor de correo, por lo que no pude realizar la implementación de la función en el front
   sendEmailToUser(): void {
     const to = this.user.email;
     const bodyTemplate = `Hola ${this.user.name}, "Bienvenido nuevo usuario al sistema".`;

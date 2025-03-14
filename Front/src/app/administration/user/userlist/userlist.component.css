@@ -19,7 +19,6 @@
 
 .user-table {
     width: 100%;
-    /* Ocupa todo el ancho del contenedor */
     border-collapse: collapse;
     font-size: 18px;
     text-align: left;
