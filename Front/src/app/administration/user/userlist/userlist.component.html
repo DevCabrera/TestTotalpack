@@ -2,6 +2,7 @@
 <!-- tabla donde recorremos ya los datos almacenados, en este caso los mocks que comente en userServices, cada usuario nuevo desspues de 10
  registros avanzara a la paginacion 2  -->
 <div class="user-table-container">
+    <h1 class="user-list-title">Administración de usuarios</h1>
     <button (click)="editUser()" class="btn-create-user">Crear usuario</button>
     <table class="user-table">
         <thead>
@@ -17,7 +18,7 @@
         <tbody>
             <tr *ngFor="let user of paginatedUsers">
                 <td>{{ user.name }}</td>
-                <td>{{ user.birthdate | date }}</td>
+                <td>{{ user.birthdate | date:'dd/MM/yyyy' }}</td>
                 <td>{{ user.email }}</td>
                 <td>{{ getPrimaryAddress(user) }}</td>
                 <td>

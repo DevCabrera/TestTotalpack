@@ -10,6 +10,13 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
+.user-list-title {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: #333;
+    text-align: left;
+}
+
 .user-table {
     width: 100%;
     /* Ocupa todo el ancho del contenedor */

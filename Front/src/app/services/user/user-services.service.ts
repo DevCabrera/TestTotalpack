@@ -32,8 +32,8 @@ export class UserServices {
     this.users = [
       {
         id: 1,
-        name: 'Carlos Pérez',
-        email: 'carlos@example.com',
+        name: 'Omar Mora',
+        email: 'omarpack@example.com',
         birthdate: new Date('1985-05-15'),
         addresses: [
           { id: 1, address: 'Calle Principal 123', isPrimary: true },

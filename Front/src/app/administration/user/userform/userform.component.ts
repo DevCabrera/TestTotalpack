@@ -21,8 +21,6 @@ export class UserFormComponent {
   temporaryAddresses: any[] = [];  // Direcciones temporales, para guardarlas en el usuario mas tarde
   maxDate: string;
 
-  //mi tarea mas complicada fue pensar la logica de las direcciones temporales, ya que al no existir un usuario, no se podia guardar la dirección
-  //por lo que se me ocurrio guardar las direcciones en un array temporal y luego guardarlas en el usuario cuando se registrara el usuario
   constructor( //Constructor de la clases con los servicios y dialogos necesarios
     private userService: UserServices,
     public dialogRef: MatDialogRef<UserFormComponent>,
@@ -50,10 +48,12 @@ export class UserFormComponent {
     return selectedDate <= today;
   }
 
-  // no pude formatear la fecha, pero dejo el intento 
-  formatDate(date: Date): string {
-    return this.datePipe.transform(date, 'dd/MM/yyyy')!;
+  // Funcion para formatear la fecha y guardarla en el formato dd/MM/yyyy
+  formatDate(date: string | Date): string {
+    const dateObj = typeof date === 'string' ? new Date(date) : date;
+    return this.datePipe.transform(dateObj, 'dd/MM/yyyy')!;
   }
+
   //Funcion para guardar el usuario con alerta de sweetalert2
   saveUser(): void {
     if (!this.validateDate()) {
@@ -64,6 +64,12 @@ export class UserFormComponent {
       });
       return;
     }
+
+    // Convertir la fecha a un objeto Date si es una cadena
+    if (typeof this.user.birthdate === 'string') {
+      this.user.birthdate = new Date(this.user.birthdate);
+    }
+
     Swal.fire({
       title: '¿Deseas guardar los cambios?',
       showDenyButton: true,
@@ -92,10 +98,7 @@ export class UserFormComponent {
     });
   }
 
-
   // Método para enviar un correo electrónico al usuario
-  //intente realizar la implementación de la función sendEmailToUser() pero no pude lograrlo, ya que tengo errores
-  //de cors en el servidor de correo, por lo que no pude realizar la implementación de la función en el front
   sendEmailToUser(): void {
     const to = this.user.email;
     const bodyTemplate = `Hola ${this.user.name}, "Bienvenido nuevo usuario al sistema".`;
@@ -114,6 +117,7 @@ export class UserFormComponent {
   closeModal(): void {
     this.dialogRef.close();
   }
+
   //abrir formulario de dirección
   openAddressForm(): void {
     const dialogRef = this.dialog.open(AddressFormComponent, {
@@ -121,9 +125,11 @@ export class UserFormComponent {
     });
 
     dialogRef.componentInstance.addressSaved.subscribe((address: any) => {
+      address.id = this.temporaryAddresses.length + 1; // Asignar un id único a la dirección temporal
       this.temporaryAddresses.push(address);
     });
   }
+
   //Funcion para setear la dirección principal
   setPrimaryAddress(addressId: number): void {
     this.temporaryAddresses.forEach((a: any) => a.isPrimary = false); //recorre las direcciones temporales y establece que no hay ninguna dirección principal

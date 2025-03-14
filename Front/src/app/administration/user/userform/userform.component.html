@@ -1,6 +1,3 @@
-<!-- formulario clave, ya que contiene la parte mas profunda del aplicativo, todo esta validado, podemos no crear una direccion y se mostrara como N/A 
- a la espera, de que luego se agreguen direcciones, ademas que reutilizo el formulario de crear y editar, ya que contienen los mismos campos
- a traves de un ternario -->
 <div class="form-container">
     <h2 class="form-title">{{ user.id ? 'Editar usuario' : 'Crear usuario' }}</h2>
     <div class="form-scrollable-content">
@@ -25,6 +22,7 @@
             <label class="form-label">Fecha Nacimiento</label>
             <input type="date" name="birthdate" [(ngModel)]="user.birthdate" class="form-input" required
                 #birthdate="ngModel" [max]="maxDate" />
+            <p *ngIf="user.birthdate">Fecha seleccionada: {{ formatDate(user.birthdate) }}</p>
             <app-form-validation [form]="userForm" [model]="birthdate" [errorMessages]="{
           required: 'La fecha de nacimiento es requerida.',
           max: 'La fecha de nacimiento no puede ser superior a la fecha actual.'
