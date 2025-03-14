@@ -2,6 +2,8 @@ README
 Descripción del Proyecto
 El proyecto cuenta con 10 usuarios mockeados(simulados para front), por lo que al agregar un usuario se ira a la paginacion 2.
 Este proyecto es una aplicación Angular que permite:
+![imagen](https://github.com/user-attachments/assets/14cc5110-f70d-44a7-b05e-31a84f3daac9)
+
 
     Agregar usuarios: Crear nuevos usuarios con nombre, email, fecha de nacimiento y direcciones.
 
@@ -50,6 +52,8 @@ Instrucciones de Uso
         Completa el formulario con la dirección y marca si es principal.
 
         Haz clic en "Guardar" para guardar al usuario.
+![imagen](https://github.com/user-attachments/assets/87b0109e-b746-4698-987a-78fcb7411188)
+
 
     Editar un usuario:
 
